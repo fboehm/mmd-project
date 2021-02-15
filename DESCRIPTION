@@ -1,0 +1,19 @@
+Package: mmdproject
+Title: U. Massachusetts Amherst Math 679 project on Maximum Mean Discrepancy for spring 2021
+Version: 0.0.0.9000
+Authors@R:
+    person(given = "Frederick",
+           family = "Boehm",
+           role = c("aut", "cre"),
+           email = "frederick.boehm@gmail.com",
+           comment = c(ORCID = "0000-0002-1644-5931"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: bookdown,
+    here
+Suggests: devtools,
+    git2r
