@@ -7,3 +7,7 @@ output: html_document
 
 R package `kernlab` has a function `kmmd`. 
 
+See, for example: https://rdrr.io/cran/kernlab/man/kmmd.html
+
+
+
