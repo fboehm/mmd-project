@@ -9,5 +9,40 @@ R package `kernlab` has a function `kmmd`.
 
 See, for example: https://rdrr.io/cran/kernlab/man/kmmd.html
 
+## Other useful sites
+
+http://www.gatsby.ucl.ac.uk/~gretton/talks.html
+
+- slides & videos for MMD related seminars
+
+http://alex.smola.org/teaching/iconip2006/iconip_3.pdf 
+
+- Smola's slides from 2006
+
+https://stats.stackexchange.com/questions/276497/maximum-mean-discrepancy-distance-distribution
+
+- informative discussion of MMD calculations
+
+
+
+
+
+
+## Software implementations
+
+https://github.com/calico/scmmd Python module
+
+```{r}
+x <- matrix(runif(300),100)
+y <- matrix(runif(300)+1,100)
+
+
+mmdo <- kernlab::kmmd(x, y)
+
+mmdo
+```
+
+
+
 
 
