@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # Maximum Mean Discrepancy
 ### Frederick Boehm
-### March 11, 2021 (updated: 2021-03-10)
+### March 11, 2021 (updated: 2021-03-11)
 
 ---
 
@@ -24,17 +24,46 @@ class: center, middle, inverse, title-slide
 
 ## Maximum Mean Discrepancy: What is it? 
 
-- Statistical method for inferring whether two samples have distinct underlying distributions [Gre+12]
+- Statistical method for inferring whether two samples have distinct underlying distributions, `\(P\)` and `\(Q\)` [Gre+12]
 
-- 
+- Idea: 
+    - Find a smooth function that has large values on points from `\(P\)` and small values on points from `\(Q\)`
+    - Test statistic is the difference between the mean function values on the two samples
+    - Large values of the test statistic provide evidence of `\(P \neq Q\)`
+    
+---
+
+# Formal definition
+
+`$$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$`
+
+Empirical estimate:
+
+`$$\sup_{f\in \mathcal{F}}\left( \frac{1}{m}\sum_{i = 1}^mf(x_i) - \frac{1}{n}\sum_{i = 1}^n f(y_i)\right)$$`
+
+- `\(\mathcal{F}\)` is the unit ball in a universal RKHS
+    - universal means being dense in the space of bounded continuous functions
+
 
 
 
 ---
 
-## Software implementations
+## Project Plan
 
-- R package `EasyMMD`: https://github.com/AnthonyEbert/EasyMMD/blob/master/R/mmd.R
+- Verify results in [Gre+12]  
+- Supplement with reading from Berlinet's "Reproducing kernel Hilbert spaces in probability and statistics" text   
+- Examine software implementations of MMD calculations
+
+*If time permits*
+
+- Examine software applications to biological data
+- Apply MMD to existing RNAseq data
+
+
+
+
+
 
 
 ---
