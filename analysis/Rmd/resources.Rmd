@@ -1,0 +1,15 @@
+---
+title: "Resources"
+author: "Frederick J. Boehm"
+date: "3/11/2021"
+output: html_document
+---
+
+## Notes for a U. Washington course on learning with kernels
+
+https://homes.cs.washington.edu/~ewein//blog/2020/08/18/rkhs/
+
+The above link discusses MMD
+
+https://homes.cs.washington.edu/~ewein/blog/ has all of the course notes
+
