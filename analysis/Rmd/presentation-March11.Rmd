@@ -56,7 +56,7 @@ $$\sup_{f\in \mathcal{F}}\left( \frac{1}{m}\sum_{i = 1}^mf(x_i) - \frac{1}{n}\su
 ## Project Plan
 
 - Verify results in `r Citep(bib, "gretton2012kernel")`  
-- Supplement with reading from Berlinet's "Reproducing kernel Hilbert spaces in probability and statistics" text   
+- Supplement with reading from Berlinet & Thomas's "Reproducing kernel Hilbert spaces in probability and statistics" text   
 - Examine software implementations of MMD calculations
 
 *If time permits*
