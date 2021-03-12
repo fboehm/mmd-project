@@ -5,7 +5,7 @@ date: "3/11/2021"
 output: html_document
 ---
 
-## Notes for a U. Washington course on learning with kernels
+## Notes for a U. Washington course about learning with kernels
 
 https://homes.cs.washington.edu/~ewein//blog/2020/08/18/rkhs/
 
