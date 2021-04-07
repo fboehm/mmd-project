@@ -7,9 +7,11 @@ output: html_document
 
 ## Notes for a U. Washington course about learning with kernels
 
-https://homes.cs.washington.edu/~ewein//blog/2020/08/18/rkhs/
+https://homes.cs.washington.edu/~ewein/blog/2020/08/18/rkhs/
 
 The above link discusses MMD
 
 https://homes.cs.washington.edu/~ewein/blog/ has all of the course notes
+
+I also added some thoughts in simplenote. 
 
