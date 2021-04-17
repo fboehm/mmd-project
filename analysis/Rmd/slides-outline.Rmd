@@ -1,0 +1,35 @@
+---
+title: "Outlining the presentation"
+author: "Frederick J. Boehm"
+date: "4/17/2021"
+output: html_document
+---
+
+1. Motivation: comparing two high-dimensional distributions
+
+1. MMD: Definition
+
+1. Empirical estimator for the MMD
+
+
+1. Properties of MMD in RKHS
+
+a. MMD as the distance between mean embeddings 
+
+b. MMD^2 and an unbiased estimator
+
+1. A test for the biased estimator, using McDiarmid bound
+
+1. Simulations to characterize MMD tests
+
+
+
+
+1. Software implementations of MMD tests
+
+1. Applying MMD to high-dimensional biological data sets
+
+
+
+
+
