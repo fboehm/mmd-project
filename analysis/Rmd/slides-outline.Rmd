@@ -20,12 +20,27 @@ b. MMD^2 and an unbiased estimator
 
 1. A test for the biased estimator, using McDiarmid bound
 
+1. Overview of other two-sample tests
+
+a. Kolmogorov-Smirnov
+
+b. Earth-movers distance 
+
+
+
+
 1. Simulations to characterize MMD tests
 
 
 
 
 1. Software implementations of MMD tests
+
+http://www.gatsby.ucl.ac.uk/~gretton/mmd/mmd.htm
+
+
+
+
 
 1. Applying MMD to high-dimensional biological data sets
 
