@@ -9,7 +9,7 @@ output: html_document
 
 1. MMD: Definition
 
-1. Empirical estimator for the MMD
+1. (Biased) Empirical estimator for the MMD
 
 
 1. Properties of MMD in RKHS
@@ -28,8 +28,7 @@ b. Earth-movers distance
 
 
 
-
-1. Simulations to characterize MMD tests
+1. Comparing power of two-sample tests (Figure 5 in Gretton, et al. 2012)
 
 
 
