@@ -1,0 +1,115 @@
+---
+title: "Maximum Mean Discrepancy"
+subtitle: ""
+author: "Fred Boehm"
+institute: ""
+date: "April 29, 2021 (updated: `r Sys.Date()`)"
+bibliography: mmd.bib
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r, load_refs, include=FALSE, cache=FALSE}
+library(RefManageR)
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+bib <- ReadBib("mmd.bib", check = FALSE)
+```
+
+
+## Motivation: Modern Biology
+
+- Inferences from high-dimensional biological data routinely depend on detecting differences in sample statistics between subjects in two or more classes  
+- While analysis may proceed through dimension reduction, we might enhance statistical power to detect true differences when we leverage the true multivariate nature of the data  
+- Maximum mean discrepancy is a new method for identifying differences in two high-dimensional distributions
+
+**add a figure**
+
+
+## Maximum Mean Discrepancy: What is it? 
+
+- Statistical method for inferring whether two samples have distinct underlying distributions, $P$ and $Q$ `r Citep(bib, "gretton2012kernel")`
+
+- Idea: 
+    - Find a smooth function that has large values on points from $P$ and small values on points from $Q$
+    - Test statistic is the difference between the mean function values on the two samples
+    - Large values of the test statistic provide evidence of $P \neq Q$
+    
+---
+
+# Formal definition
+
+$$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$
+
+Biased empirical estimate:
+
+$$\sup_{f\in \mathcal{F}}\left( \frac{1}{m}\sum_{i = 1}^mf(x_i) - \frac{1}{n}\sum_{i = 1}^n f(y_i)\right)$$
+
+- $\mathcal{F}$ is the unit ball in a universal RKHS
+    - universal: dense in the space of bounded continuous functions
+
+---
+
+## MMD: Properties
+
+
+---
+
+## MMD Existence in RKHS, $\mathcal{H}$ `r Citep(bib, "gretton2012kernel")`
+
+*Lemma 3*: If $k*(\cdot, \cdot)$ is measurable and $\mathbb{E}_x \sqrt{k(x,x)} < \infty$ then mean embedding of $P$, termed $\mu_p$, is in the RKHS
+
+*Proof*: 
+
+- Define linear operator, $T_pf = \mathbb{E}_xf$ for all $f \in \mathcal{F}$
+- By assumption, $T_pf$ bounded, since
+
+$$|T_pf| = |\mathbb{E}_xf| \le \mathbb{E}_x|f| =  \mathbb{E}_x |\langle f, \phi(x) \rangle_{\mathcal{H}}| \le \mathbb{E}_x \left( \sqrt{k(x, x)}||f||_{\mathcal{H}}\right)$$
+- Apply Riesz representation theorem to see that there is a $\mu_p \in \mathcal{H}$ with $T_pf = \langle f, \mu_p \rangle_{\mathcal{H}}$ 
+
+- Set $f = \phi(t) = k(t, \cdot)$ to get $\mu_p(t) = \langle \mu_p, k(t, \cdot)\rangle_{\mathcal{H}} = \mathbb{E}_xk(t, x)$
+
+- Mean embedding of $p$ is the expectation under $p$ of the canonical feature map
+
+
+---
+
+## MMD as a metric
+
+- MMD is a matric when $\mathcal{H}$ is a *universal* RKHS defined on a compact metric space $\mathcal{X}$  
+  - $k(\cdot, \cdot) continuous  
+  - $\mathcal{H}$ dense in $\mathcal{C}(\mathcal{X})$ with respect to $L_{\infty}$ norm 
+
+---
+
+## 
+
+
+
+---
+
+## References
+
+```{r refs, echo=FALSE, results="asis"}
+PrintBibliography(bib)
+```
+
+
+
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
