@@ -34,6 +34,7 @@ bib <- ReadBib("mmd.bib", check = FALSE)
 
 **add a figure**
 
+---
 
 ## Maximum Mean Discrepancy: What is it? 
 
@@ -59,6 +60,7 @@ $$\sup_{f\in \mathcal{F}}\left( \frac{1}{m}\sum_{i = 1}^mf(x_i) - \frac{1}{n}\su
 
 ---
 
+
 ## MMD: Properties
 
 
@@ -66,7 +68,7 @@ $$\sup_{f\in \mathcal{F}}\left( \frac{1}{m}\sum_{i = 1}^mf(x_i) - \frac{1}{n}\su
 
 ## MMD Existence in RKHS, $\mathcal{H}$ `r Citep(bib, "gretton2012kernel")`
 
-*Lemma 3*: If $k*(\cdot, \cdot)$ is measurable and $\mathbb{E}_x \sqrt{k(x,x)} < \infty$ then mean embedding of $P$, termed $\mu_p$, is in the RKHS
+*Lemma 3*: If $k(\cdot, \cdot)$ is measurable and $\mathbb{E}_x \sqrt{k(x,x)} < \infty$ then mean embedding of $P$, termed $\mu_p$, is in the RKHS
 
 *Proof*: 
 
@@ -86,12 +88,27 @@ $$|T_pf| = |\mathbb{E}_xf| \le \mathbb{E}_x|f| =  \mathbb{E}_x |\langle f, \phi(
 ## MMD as a metric
 
 - MMD is a matric when $\mathcal{H}$ is a *universal* RKHS defined on a compact metric space $\mathcal{X}$  
-  - $k(\cdot, \cdot) continuous  
+  - $k(\cdot, \cdot)$ continuous  
   - $\mathcal{H}$ dense in $\mathcal{C}(\mathcal{X})$ with respect to $L_{\infty}$ norm 
 
 ---
 
-## 
+## Software for MMD
+
+
+---
+
+
+## Matlab code 
+
+- Gretton shares matlab code on his site: http://www.gatsby.ucl.ac.uk/~gretton/mmd/mmd.htm
+
+- 4 methods for calculating test thresholds:  
+  - Bootstrap  
+  - Fast, consistent test  
+  - Moment matching using Pearson curves  
+  - Gamma test  
+  
 
 
 
