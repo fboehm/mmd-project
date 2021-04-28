@@ -98,6 +98,8 @@ $$|T_pf| = |\mathbb{E}_xf| \le \mathbb{E}_x|f| =  \mathbb{E}_x |\langle f, \phi(
 
 ---
 
+class: inverse, center, middle
+
 ## Software for MMD
 
 
@@ -115,6 +117,13 @@ $$|T_pf| = |\mathbb{E}_xf| \le \mathbb{E}_x|f| =  \mathbb{E}_x |\langle f, \phi(
   - Gamma test  
   
 
+---
+
+## Bootstrap test
+
+
+
+
 
 
 ---
@@ -131,7 +140,7 @@ PrintBibliography(bib)
 
 class: center, middle
 
-# Thanks!
+# Thank you!
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
