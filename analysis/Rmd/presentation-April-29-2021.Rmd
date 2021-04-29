@@ -50,7 +50,7 @@ knitr::include_graphics("../figures/Heatmap.png")
     
 ---
 
-# Formal definition
+## Formal definition
 
 $$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$
 
@@ -92,7 +92,7 @@ $$|T_pf| = |\mathbb{E}_xf| \le \mathbb{E}_x|f| =  \mathbb{E}_x |\langle f, \phi(
 
 ## MMD as a metric
 
-- MMD is a matric when $\mathcal{H}$ is a *universal* RKHS defined on a compact metric space $\mathcal{X}$  
+- MMD is a metric on Borel probability measures when $\mathcal{H}$ is a *universal* RKHS defined on a compact metric space $\mathcal{X}$  
   - $k(\cdot, \cdot)$ continuous  
   - $\mathcal{H}$ dense in $\mathcal{C}(\mathcal{X})$ with respect to $L_{\infty}$ norm 
 
@@ -119,10 +119,57 @@ class: inverse, center, middle
 
 ---
 
-## Bootstrap test
+class: center, inverse, middle
+
+## Biology
 
 
+---
 
+## Microarray cross-platform comparability `r Citep(bib, "borgwardt2006integrating")`
+
+- Two breast cancer data sets on different microarray platforms  
+- 2166 common genes  
+
+- Question: Can we use MMD to identify differences in the microarray results? 
+
+---
+
+## Results `r Citep(bib, "borgwardt2006integrating")`
+
+```{r, echo = FALSE}
+library(magrittr)
+tibble::tibble(platform = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 95, 5), 
+               wolfowitz = c(93, 7, 0, 100),
+               smirnov = c(95, 5, 29, 71)) %>%
+  knitr::kable()
+```
+
+---
+
+## Cancer diagnosis `r Citep(bib, "borgwardt2006integrating")`
+
+Can we distinguish normal from tumor tissues with gene expression data from a prostate cancer study? 
+
+- Use gene expression profiles from healthy patients and patients with prostate cancer  
+
+
+---
+
+## Results
+
+```{r, echo = FALSE}
+tibble::tibble(health_status = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 100, 0), 
+               wolfowitz = c(97, 3, 0, 100),
+               smirnov = c(98, 2, 38, 62)) %>%
+  knitr::kable()
+```
 
 
 

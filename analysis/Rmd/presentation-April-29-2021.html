@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # Maximum Mean Discrepancy
 ### Fred Boehm
-### April 29, 2021 (updated: 2021-04-28)
+### April 29, 2021 (updated: 2021-04-29)
 
 ---
 
@@ -44,7 +44,7 @@ class: center, middle, inverse, title-slide
     
 ---
 
-# Formal definition
+## Formal definition
 
 `$$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$`
 
@@ -86,7 +86,7 @@ class: inverse, center, middle
 
 ## MMD as a metric
 
-- MMD is a matric when `\(\mathcal{H}\)` is a *universal* RKHS defined on a compact metric space `\(\mathcal{X}\)`  
+- MMD is a metric on Borel probability measures when `\(\mathcal{H}\)` is a *universal* RKHS defined on a compact metric space `\(\mathcal{X}\)`  
   - `\(k(\cdot, \cdot)\)` continuous  
   - `\(\mathcal{H}\)` dense in `\(\mathcal{C}(\mathcal{X})\)` with respect to `\(L_{\infty}\)` norm 
 
@@ -113,16 +113,69 @@ class: inverse, center, middle
 
 ---
 
+<<<<<<< HEAD
 ## Bootstrap test
 
 
 
+=======
+class: center, inverse, middle
+
+## Biology
+
+
+---
+
+## Microarray cross-platform comparability [Bor+06]
+
+- Two breast cancer data sets on different microarray platforms  
+- 2166 common genes  
+
+- Question: Can we use MMD to identify differences in the microarray results? 
+
+---
+
+## Results [Bor+06]
+
+
+|platform  |null_hypothesis | MMD| t_test| wolfowitz| smirnov|
+|:---------|:---------------|---:|------:|---------:|-------:|
+|same      |accepted        | 100|    100|        93|      95|
+|same      |rejected        |   0|      0|         7|       5|
+|different |accepted        |   0|     95|         0|      29|
+|different |rejected        | 100|      5|       100|      71|
+
+---
+
+## Cancer diagnosis [Bor+06]
+
+Can we distinguish normal from tumor tissues with gene expression data from a prostate cancer study? 
+
+- Use gene expression profiles from healthy patients and patients with prostate cancer  
+
+
+---
+
+## Results
+
+
+|health_status |null_hypothesis | MMD| t_test| wolfowitz| smirnov|
+|:-------------|:---------------|---:|------:|---------:|-------:|
+|same          |accepted        | 100|    100|        97|      98|
+|same          |rejected        |   0|      0|         3|       2|
+|different     |accepted        |   0|    100|         0|      38|
+|different     |rejected        | 100|      0|       100|      62|
+>>>>>>> 7a1b59f556623f1d6182722acb67364db9b79cc2
 
 
 
 ---
 
 ## References
+
+Borgwardt, K. M., A. Gretton, M. J. Rasch, et al. (2006). "Integrating
+structured biological data by kernel maximum mean discrepancy". In:
+_Bioinformatics_ 22.14, pp. e49-e57.
 
 Gretton, A., K. M. Borgwardt, M. J. Rasch, et al. (2012). "A kernel
 two-sample test". In: _The Journal of Machine Learning Research_ 13.1,
