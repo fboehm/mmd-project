@@ -162,7 +162,7 @@ Can we distinguish normal from tumor tissues with gene expression data from a pr
 ## Results
 
 ```{r, echo = FALSE}
-tibble::tibble(platform = c("same", "same", "different", "different"), 
+tibble::tibble(health_status = c("same", "same", "different", "different"), 
                null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
                MMD = c(100, 0, 0, 100), 
                t_test = c(100, 0, 100, 0), 
