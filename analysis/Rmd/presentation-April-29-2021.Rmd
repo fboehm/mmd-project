@@ -50,7 +50,7 @@ knitr::include_graphics("../figures/Heatmap.png")
     
 ---
 
-# Formal definition
+## Formal definition
 
 $$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$
 
@@ -145,6 +145,29 @@ tibble::tibble(platform = c("same", "same", "different", "different"),
                t_test = c(100, 0, 95, 5), 
                wolfowitz = c(93, 7, 0, 100),
                smirnov = c(95, 5, 29, 71)) %>%
+  knitr::kable()
+```
+
+---
+
+## Cancer diagnosis `r Citep(bib, "borgwardt2006integrating")`
+
+Can we distinguish normal from tumor tissues with gene expression data from a prostate cancer study? 
+
+- Use gene expression profiles from healthy patients and patients with prostate cancer  
+
+
+---
+
+## Results
+
+```{r, echo = FALSE}
+tibble::tibble(platform = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 100, 0), 
+               wolfowitz = c(97, 3, 0, 100),
+               smirnov = c(98, 2, 38, 62)) %>%
   knitr::kable()
 ```
 

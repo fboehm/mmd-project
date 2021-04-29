@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 
 # Maximum Mean Discrepancy
 ### Fred Boehm
-### April 29, 2021 (updated: 2021-04-28)
+### April 29, 2021 (updated: 2021-04-29)
 
 ---
 
@@ -44,7 +44,7 @@ class: center, middle, inverse, title-slide
     
 ---
 
-# Formal definition
+## Formal definition
 
 `$$MMD(\mathcal{F}, P, Q) = \sup_{f \in \mathcal{F}}\left( \mathbb{E}_Pf(X) - \mathbb{E}_Qf(Y)\right)$$`
 
@@ -138,6 +138,27 @@ class: center, inverse, middle
 |same      |rejected        |   0|      0|         7|       5|
 |different |accepted        |   0|     95|         0|      29|
 |different |rejected        | 100|      5|       100|      71|
+
+---
+
+## Cancer diagnosis [Bor+06]
+
+Can we distinguish normal from tumor tissues with gene expression data from a prostate cancer study? 
+
+- Use gene expression profiles from healthy patients and patients with prostate cancer  
+
+
+---
+
+## Results
+
+
+|platform  |null_hypothesis | MMD| t_test| wolfowitz| smirnov|
+|:---------|:---------------|---:|------:|---------:|-------:|
+|same      |accepted        | 100|    100|        97|      98|
+|same      |rejected        |   0|      0|         3|       2|
+|different |accepted        |   0|    100|         0|      38|
+|different |rejected        | 100|      0|       100|      62|
 
 
 
