@@ -1,20 +1,22 @@
 ---
-title: "Title Goes Here"
+title: "Maximum Mean Discrepancy in High-Dimensional Biology"
 author:
-  - Myfirstname Mylastname:
-      email: fl@oneplace.edu
-      institute: [UofO]
+  - Frederick Boehm:
+      email: frederick.boehm@gmail.com
+      institute: [UMMS]
       correspondence: true
-  - Yourfirstname Yourlastname:
-      email: fl@another.edu
-      institute: [UofA]
-      correspondence: false
 institute:
-  - UofO: University of One Place
-  - UofA: University of Another Place
+  - UMMS: University of Massachusetts Medical School
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
     bookdown::word_document2:
+      fig_caption: yes
+      reference_docx: "../templates/template.docx" # Insert path for the DOCX file
+      pandoc_args:
+      - --lua-filter=../templates/scholarly-metadata.lua
+      - --lua-filter=../templates/author-info-blocks.lua
+      - --lua-filter=../templates/pagebreak.lua
+    bookdown::html_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
       pandoc_args:
@@ -55,11 +57,41 @@ knitr::opts_chunk$set(
 
 <!-- The actual document text starts here: -->
 
-# Introduction
+# Specific Aims
 
-Here is a citation [@Marwick2017]
+**Aim 1: Examine statistical and mathematical properties of MMD.**
 
-# Background
+**Aim 2: Apply MMD to high-dimensional biological data**
+
+**Aim 3: Create an R package that implements MMD methods**
+
+# Background and Significance
+
+The last twenty years have seen an explosion in the volume and dimensionality of molecular biology data. Following the sequencing of the human genome, technologies such as 
+DNA sequencing, RNA sequencing, and single-cell RNA sequencing proliferated. 
+The new experimental designs and high dimension of modern biological data require parallel 
+development of new statistical methods and computational tools for their analysis.
+Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties [@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical and statistical properties and to apply MMD methods 
+in the analysis of high-dimensional biological data.
+
+MMD is a statistical method for determining whether two high-dimensional samples arise from 
+distinct distributions. Throughout this document, we use the term "sample" to refer to 
+measurements on a collection of subjects from a single group. In introductory statistics 
+courses, one often studies Student's t-test [@student1908probable] when discerning whether 
+two samples come from the same distribution. Implicit to the t-test are the assumptions that 
+the two samples arise from normally distributions with a single, common variance parameter.
+
+
+
+
+
+
+
+
+
+# Approach
+
+
 
 # Methods
 
