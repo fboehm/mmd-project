@@ -9,14 +9,14 @@ institute:
   - UMMS: University of Massachusetts Medical School
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
-    bookdown::html_document2:
+    bookdown::word_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
       pandoc_args:
       - --lua-filter=../templates/scholarly-metadata.lua
       - --lua-filter=../templates/author-info-blocks.lua
       - --lua-filter=../templates/pagebreak.lua
-    bookdown::word_document2:
+    bookdown::html_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
       pandoc_args:
@@ -59,16 +59,15 @@ knitr::opts_chunk$set(
 
 # Specific Aims
 
-**Aim 1: Examine statistical and mathematical properties of MMD.**
 
-**Aim 2: Apply MMD to high-dimensional biological data**
+**Aim 1: Apply MMD to high-dimensional biological data**
 
-**Aim 3: Create an R package that implements MMD methods**
+**Aim 2: Create an R package that implements MMD methods**
 
-Current R software for MMD calculations don't provide significance thresholds. Gretton's 
+Current R software for MMD methods doesn't provide significance thresholds. Gretton's 
 website hosts Matlab software that implements the methods in @gretton2012kernel, @gretton2009fast 
-and @gretton2006kernel. We will create an R package with Rcpp [@eddelbuettel2011rcpp]. We'll implement the methods in
-R and C++ before assembling the code into a well documented, user-friendly R package [@r]. 
+and @gretton2006kernel. We'll implement the methods in
+R and C++ before assembling the code into a well documented, user-friendly R package [@r;@eddelbuettel2011rcpp]. 
 
 
 
@@ -88,11 +87,30 @@ MMD is a statistical method for determining whether two high-dimensional samples
 distinct distributions. Throughout this document, we use the term "sample" to refer to 
 measurements on a collection of subjects from a single group. In introductory statistics 
 courses, one often studies Student's t-test [@student1908probable] when discerning whether 
-two samples come from the same distribution. Implicit to the t-test are the assumptions that 
-the two samples arise from normally distributions with a single, common variance parameter.
+two samples come from the same distribution. Implicit to the t-test is the assumption that 
+the two samples arise from normal distributions with a single, common variance parameter.
+
+```{r, microarray, echo = FALSE}
+library(magrittr)
+tibble::tibble(platform = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 95, 5), 
+               wolfowitz = c(93, 7, 0, 100),
+               smirnov = c(95, 5, 29, 71)) %>%
+  gt::gt(caption = "Microarray cross-platform comparability")
+```
 
 
-
+```{r, cancer, echo = FALSE}
+tibble::tibble(health_status = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 100, 0), 
+               wolfowitz = c(97, 3, 0, 100),
+               smirnov = c(98, 2, 38, 62)) %>%
+  gt::gt(caption = "Cancer diagnosis")
+```
 
 
 
