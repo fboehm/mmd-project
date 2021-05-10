@@ -59,14 +59,27 @@ knitr::opts_chunk$set(
 
 # Specific Aims
 
+The last twenty years have seen an explosion in the volume and dimensionality of molecular biology data. Following the sequencing of the human genome, technologies such as 
+DNA sequencing, RNA sequencing, and single-cell RNA sequencing proliferated. 
+The new experimental designs and high dimension of modern biological data require parallel 
+development of new statistical methods and computational tools for their analysis.
+Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties [@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical and statistical properties, to apply MMD methods 
+in the analysis of high-dimensional biological data, and to build user-friendly R software tools that implement MMD methods.
+
+
+
 
 **Aim 1: Apply MMD to high-dimensional biological data**
 
-**Aim 2: Create an R package that implements MMD methods**
+Two-sample problems arise in many areas of biomedical research. These include differential gene expression, comparability of data 
+from different laboratories, and classification of cancers. @borgwardt2006integrating examined performance characteristics of four multivariate two-sample tests in a collection of four biological settings. They found that MMD outperformed the other three tests. 
+settings of  
+
+**Aim 2: Create and maintain an open source R package that implements MMD methods**
 
 Current R software for MMD methods doesn't provide significance thresholds. Gretton's 
 website hosts Matlab software that implements the methods in @gretton2012kernel, @gretton2009fast 
-and @gretton2006kernel. We'll implement the methods in
+and @gretton2006kernel. We'll implement these methods in
 R and C++ before assembling the code into a well documented, user-friendly R package [@r;@eddelbuettel2011rcpp]. 
 
 
@@ -76,12 +89,6 @@ R and C++ before assembling the code into a well documented, user-friendly R pac
 
 # Background and Significance
 
-The last twenty years have seen an explosion in the volume and dimensionality of molecular biology data. Following the sequencing of the human genome, technologies such as 
-DNA sequencing, RNA sequencing, and single-cell RNA sequencing proliferated. 
-The new experimental designs and high dimension of modern biological data require parallel 
-development of new statistical methods and computational tools for their analysis.
-Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties [@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical and statistical properties and to apply MMD methods 
-in the analysis of high-dimensional biological data.
 
 MMD is a statistical method for determining whether two high-dimensional samples arise from 
 distinct distributions. Throughout this document, we use the term "sample" to refer to 
