@@ -115,15 +115,25 @@ Like its univariate counterpart, Hotelling's test assumes a normal (multivariate
 errors and a shared covariance matrix for the two groups. Departures
 from these assumptions may give rise to type I and type II errors in testing. 
 
-To combat limitations of existing high-dimensional, two-sample tests, @gretton2006kernel proposed a kernel-based 
-test for the two-sample problem. Drawing on reproducing kernel Hilbert space theory, they formulate their test as a 
-measure of distance between two embeddings of probability measures in a RKHS. @gretton2006kernel then write the test 
+To combat limitations of previous high-dimensional, two-sample tests, @gretton2006kernel proposed a kernel-based 
+test for the two-sample problem. Drawing on reproducing kernel Hilbert space (RKHS) theory, they formulate their test as a 
+measure of distance between embeddings of probability measures in a RKHS. @gretton2006kernel then write the test 
 as a maximization over a subspace $\mathcal{F}$ of their RKHS, $\mathcal{H}$ (Equation \@ref(eq:define)).
 
 \begin{equation}
 MMD[\mathcal{F}, p, q] = \sup_{f \in \mathcal{F}}\left(\mathbb{E}_xf(x) - \mathbb{E}_yf(y) \right)
   (\#eq:define)
 \end{equation}
+
+By embedding probability measures in a Hilbert space, and a RKHS in particular, @gretton2012kernel have the option of using a 
+rich set of analytic tools and theory. They lean heavily on the "kernel trick", which characterizes the "reproducing" nature of the 
+RKHS $\mathcal{H}$. The Riesz representation theorem for Hilbert spaces states that there is a feature map, $\phi(x) = k(x, \cdot)$ 
+such that $f(x) = \langle f, \phi(x)\rangle_{\mathcal{H}}$ for any $f \in \mathcal{H}$. 
+@gretton2012kernel then define an embedding for probability distribution $p$ as an element $\mu_p \in \mathcal{H}$ satisfying $\mathbb{E}_xf = \langle f, \mu_p\rangle_{\mathcal{H}}$.
+
+## MMD Properties
+
+
 
 
 
