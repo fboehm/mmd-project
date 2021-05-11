@@ -9,6 +9,14 @@ institute:
   - UMMS: University of Massachusetts Medical School
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
+    bookdown::pdf_document2:
+      citation_package: biblatex
+      fig_caption: yes
+      reference_docx: "../templates/template.docx" # Insert path for the DOCX file
+      pandoc_args:
+      - --lua-filter=../templates/scholarly-metadata.lua
+      - --lua-filter=../templates/author-info-blocks.lua
+      - --lua-filter=../templates/pagebreak.lua
     bookdown::word_document2:
       fig_caption: yes
       reference_docx: "../templates/template.docx" # Insert path for the DOCX file
@@ -31,6 +39,9 @@ keywords: |
   keyword 1; keyword 2; keyword 3
 highlights: |
   These are the highlights. 
+linkcolor: green
+urlcolor: blue
+citecolor: red
 ---
 
 <!-- This is the format for text comments that will be ignored during renderings. Do not put R code in these comments because it will not be ignored. -->
@@ -59,11 +70,13 @@ knitr::opts_chunk$set(
 
 # Specific Aims
 
-The last twenty years have seen an explosion in the volume and dimensionality of molecular biology data. Following the sequencing of the human genome, technologies such as 
-DNA sequencing, RNA sequencing, and single-cell RNA sequencing proliferated. 
+The volume and dimensionality of molecular biology data has exploded over the last twenty years. Following the sequencing of the human genome, technologies such as 
+DNA sequencing, RNA sequencing, and single-cell RNA sequencing have proliferated. 
 The new experimental designs and high dimension of modern biological data require parallel 
 development of new statistical methods and computational tools for their analysis.
-Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties [@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical and statistical properties, to apply MMD methods 
+Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties 
+[@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical 
+and statistical properties, to apply MMD methods 
 in the analysis of high-dimensional biological data, and to build user-friendly R software tools that implement MMD methods.
 
 
@@ -97,6 +110,24 @@ courses, one often studies Student's t-test [@student1908probable] when discerni
 two samples come from the same distribution. Implicit to the t-test is the assumption that 
 the two samples arise from normal distributions with a single, common variance parameter.
 
+In high-dimensional settings, the analog of Student's t-test is Hotelling's $T^2$ test [@hotelling1931generalization]. 
+Like its univariate counterpart, Hotelling's test assumes a normal (multivariate joint normal) distribution of the random 
+errors and a shared covariance matrix for the two groups. Departures
+from these assumptions may give rise to type I and type II errors in testing. 
+
+To combat limitations of existing high-dimensional, two-sample tests, @gretton2006kernel proposed a kernel-based 
+test for the two-sample problem. Drawing on reproducing kernel Hilbert space theory, they formulate their test as a 
+measure of distance between two embeddings of probability measures in a RKHS. @gretton2006kernel then write the test 
+as a maximization over a subspace $\mathcal{F}$ of their RKHS, $\mathcal{H}$ (Equation \@ref(eq:define)).
+
+\begin{equation}
+MMD[\mathcal{F}, p, q] = \sup_{f \in \mathcal{F}}\left(\mathbb{E}_xf(x) - \mathbb{E}_yf(y) \right)
+  (\#eq:define)
+\end{equation}
+
+
+
+
 ```{r, microarray, echo = FALSE}
 library(magrittr)
 tibble::tibble(platform = c("same", "same", "different", "different"), 
@@ -105,7 +136,9 @@ tibble::tibble(platform = c("same", "same", "different", "different"),
                t_test = c(100, 0, 95, 5), 
                wolfowitz = c(93, 7, 0, 100),
                smirnov = c(95, 5, 29, 71)) %>%
-  gt::gt(caption = "Microarray cross-platform comparability")
+  gt::gt() %>%
+  gt::tab_header("Microarray cross-platform comparability", 
+                 label = "tab:microarray")
 ```
 
 
@@ -116,7 +149,9 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
                t_test = c(100, 0, 100, 0), 
                wolfowitz = c(97, 3, 0, 100),
                smirnov = c(98, 2, 38, 62)) %>%
-  gt::gt(caption = "Cancer diagnosis")
+  gt::gt() %>%
+  gt::tab_header("Cancer diagnosis",
+             label = "tab:cancer")
 ```
 
 
@@ -128,48 +163,12 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
 
 
 
-# Methods
 
-# Results
 
-<!-- Here's some example analysis code: -->
-
-```{r get-data, eval = FALSE}
-# Note the path that we need to use to access our data files when rendering this document
-my_data <- read.csv(here::here('analysis/data/raw_data/my_csv_file.csv'))
-```
-
-```{r demo-plot, fig.cap="A plot of random numbers"}
-plot(rnorm(10))
-```
-
-Figure \@ref(fig:demo-plot) shows how we can have a caption and cross-reference for a plot
-
-```{r demo-inline-code}
-x <- round(pi, 2)
-```
-
-Here is an example of inline code `r x` in the middle of a sentence. 
-
-# Discussion
-
-# Conclusion
-
-# Acknowledgements
-
-<!-- The following line inserts a page break  -->
 
 \newpage
 
-# References 
-
-<!-- The following line ensures the references appear here for the MS Word or HTML output files, rather than right at the end of the document (this will not work for PDF files):  -->
-
-<div id="refs"></div>
-
-\newpage
-
-### Colophon
+# Colophon
 
 This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
 
