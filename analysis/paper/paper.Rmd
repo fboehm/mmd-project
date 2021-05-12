@@ -1,5 +1,5 @@
 ---
-title: "Maximum Mean Discrepancy in High-Dimensional Biology"
+title: "Maximum Mean Discrepancy: A New Tool for High-Dimensional Biology"
 author:
   - Frederick Boehm:
       email: frederick.boehm@gmail.com
@@ -7,7 +7,7 @@ author:
       correspondence: true
 institute:
   - UMMS: University of Massachusetts Medical School
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
 output: 
     bookdown::pdf_document2:
       citation_package: biblatex
@@ -68,6 +68,9 @@ knitr::opts_chunk$set(
 
 <!-- The actual document text starts here: -->
 
+
+\newpage
+
 # Specific Aims
 
 The volume and dimensionality of molecular biology data has exploded over the last twenty years. Following the sequencing of the human genome, technologies such as 
@@ -97,7 +100,7 @@ R and C++ before assembling the code into a well documented, user-friendly R pac
 
 
 
-
+\newpage
 
 
 # Background and Significance
@@ -175,7 +178,7 @@ tibble::tibble(platform = c("same", "same", "different", "different"),
 ```
 
 The results in Table \@ref(tab:microarray) display perfect accuracy for the MMD-based test: it correctly identified 100 of 100 
-subsamples chosen from different platforms and 100 of 100 subsamples chosen from the same platform. The Friedman-Rafsky tests performed 
+subsamples chosen from different platforms and 100 of 100 subsamples chosen from the same platform. The two Friedman-Rafsky tests performed 
 at an intermediate level, while the Hotelling's $T^2$ test performed poorly. Specifically, the Hotelling's $T^2$ test incorrectly 
 called 95 of 100 cases when the two subsamples were chosen from different platforms.  
 
@@ -195,12 +198,13 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
 ```
 
 
-The remarkable performance of the MMD-based tests in these two high-dimensional settings deserves further study. It is from this perspective that we propose research to more completely characterize and understand the MMD-based test.
+The remarkable performance of the MMD-based tests in these two high-dimensional settings deserves further study. It is from this 
+perspective that we propose research to more completely characterize and understand the MMD-based test.
 
 
 
 
-
+\newpage
 
 
 # Approach
@@ -213,25 +217,13 @@ By achieving **Aim 2**, we'll have R implementations of the MMD-based tests.
 
 ## Approach for Aim 2
 
-
-
-
-
+I'll draw on my extensive experience in statistical software development to create an R package with code in C++ and R. The R package 
+`Rcpp` facilitates the integration of C++ code into R packages. The current code base from Gretton's website is written in Matlab. I'll 
+translate it, line for line, into C++ or R. The proposed R package will have extensive unit tests to ensure fidelity and accuracy of my code and to 
+compare results with those obtained with Gretton's Matlab code. The R package `testthat` makes writing of unit tests especially easy [@wickham2011]. 
 
 \newpage
 
-# Colophon
 
-This report was generated on `r Sys.time()` using the following computational environment and dependencies: 
 
-```{r colophon, cache = FALSE}
-# which R packages and versions?
-if ("devtools" %in% installed.packages()) devtools::session_info()
-```
 
-The current Git commit details are:
-
-```{r}
-# what commit is this file at? 
-if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())  
-```
