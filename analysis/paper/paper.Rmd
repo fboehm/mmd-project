@@ -115,6 +115,8 @@ Like its univariate counterpart, Hotelling's test assumes a normal (multivariate
 errors and a shared covariance matrix for the two groups. Departures
 from these assumptions may give rise to type I and type II errors in testing. 
 
+## MMD and its Definition
+
 To combat limitations of previous high-dimensional, two-sample tests, @gretton2006kernel proposed a kernel-based 
 test for the two-sample problem. Drawing on reproducing kernel Hilbert space (RKHS) theory, they formulate their test as a 
 measure of distance between embeddings of probability measures in a RKHS. @gretton2006kernel then write the test 
@@ -133,7 +135,28 @@ such that $f(x) = \langle f, \phi(x)\rangle_{\mathcal{H}}$ for any $f \in \mathc
 
 ## MMD Properties
 
+## @borgwardt2006integrating Results
 
+In aiming to understand and characterize the performance of MMD-based statistical hypothesis tests, we begin by considering the 
+striking results from @borgwardt2006integrating. @borgwardt2006integrating obtained two data sets from published breast cancer studies. 
+Both data sets featured gene expression measurements on 2,166 common genes, but the measurements were obtained from two different 
+microarray platforms. @borgwardt2006integrating emphasized that, if there were no differences between the measurements on the two 
+platforms, then the two data sets could be analyzed together. A joint analysis, when appropriate, would likely lead to greater 
+statistical power to infer meaningful expression signatures for breast cancer. After scaling and centering expression measurements, 
+they examined four tests. For the MMD-based test, they chose a Gaussian kernel with standard deviation set to 20. 
+@borgwardt2006integrating compared the MMD-based test to standard multivariate tests including Hotelling's $T^2$ test, the 
+Friedman-Rafsky multivariate Kolmogorov-Smirnov test, and the Friedman-Rafsky Wald-Wolfowitz test. 
+
+In the first of two analyses, the study design consisted of randomly choosing 25 subjects' vectors of expression measurements from each 
+sample (*i.e.*, each platform). That is, the gene expression vectors of length 2,166 were used. The two resulting subsamples consisted 
+of 25 by 2166 matrices. To these pairs of subsamples, @borgwardt2006integrating applied the four tests. They repeated the entire 
+procedure 100 times. They recorded the number of instances in which each of the four multivariate tests rejected the null hypothesis 
+that the two subsamples arose from the same platform. Table \@ref(tab:microarray) tabulates the counts for the 100 instances of each 
+test. 
+
+The second of two analyses had a similar study design, except that instead of choosing 25 subjects from each of two platforms, 
+@borgwardt2006integrating first chose one of the two platforms. They then chose two groups of 25 from the chosen platform and compared 
+the resulting subsamples. Again, they repeated the procedure 100 times and recorded the results in Table \@ref(tab:microarray).
 
 
 
@@ -151,6 +174,13 @@ tibble::tibble(platform = c("same", "same", "different", "different"),
                  label = "tab:microarray")
 ```
 
+The results in Table \@ref(tab:microarray) display perfect accuracy for the MMD-based test: it correctly identified 100 of 100 
+subsamples chosen from different platforms and 100 of 100 subsamples chosen from the same platform. The Friedman-Rafsky tests performed 
+at an intermediate level, while the Hotelling's $T^2$ test performed poorly. Specifically, the Hotelling's $T^2$ test incorrectly 
+called 95 of 100 cases when the two subsamples were chosen from different platforms.  
+
+
+
 
 ```{r, cancer, echo = FALSE}
 tibble::tibble(health_status = c("same", "same", "different", "different"), 
@@ -165,11 +195,23 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
 ```
 
 
+The remarkable performance of the MMD-based tests in these two high-dimensional settings deserves further study. It is from this perspective that we propose research to more completely characterize and understand the MMD-based test.
+
+
+
 
 
 
 
 # Approach
+
+## Approach for Aim 1
+
+With the goal of enhancing understanding of the MMD-based test in high dimensions, we will undertake the following research plan. 
+First, we'll identify existing R code that implements Hotelling's $T^2$ test and the two Friedman-Rafsky tests. 
+By achieving **Aim 2**, we'll have R implementations of the MMD-based tests.   
+
+## Approach for Aim 2
 
 
 
