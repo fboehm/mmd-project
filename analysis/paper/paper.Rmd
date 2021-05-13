@@ -1,5 +1,5 @@
 ---
-title: "Maximum Mean Discrepancy: A New Tool for High-Dimensional Biology"
+title: "Maximum Mean Discrepancy: A New Analysis Tool for High-Dimensional Biology"
 author:
   - Frederick Boehm:
       email: frederick.boehm@gmail.com
@@ -34,7 +34,7 @@ output:
 bibliography: references.bib
 csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
 abstract: |
-  Text of abstract
+  
 keywords: |
   keyword 1; keyword 2; keyword 3
 highlights: |
@@ -88,8 +88,8 @@ in the analysis of high-dimensional biological data, and to build user-friendly 
 **Aim 1: Apply MMD to high-dimensional biological data**
 
 Two-sample problems arise in many areas of biomedical research. These include differential gene expression, comparability of data 
-from different laboratories, and classification of cancers. @borgwardt2006integrating examined performance characteristics of four multivariate two-sample tests in a collection of four biological settings. They found that MMD outperformed the other three tests. 
-settings of  
+from different laboratories, and classification of cancers. @borgwardt2006integrating examined performance characteristics of four 
+multivariate two-sample tests in a collection of four biological settings. They found that MMD outperformed the other three multivariate tests. 
 
 **Aim 2: Create and maintain an open source R package that implements MMD methods**
 
@@ -196,6 +196,21 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
   gt::tab_header("Cancer diagnosis",
              label = "tab:cancer")
 ```
+
+```{r, subtype, echo = FALSE}
+tibble::tibble(subtype = c("same", "same", "different", "different"), 
+               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
+               MMD = c(100, 0, 0, 100), 
+               t_test = c(100, 0, 100, 0), 
+               wolfowitz = c(95, 5, 0, 100),
+               smirnov = c(96, 4, 22, 78)) %>%
+  gt::gt() %>%
+  gt::tab_header("Cancer subtype",
+             label = "tab:subtype")
+```
+
+
+
 
 
 The remarkable performance of the MMD-based tests in these two high-dimensional settings deserves further study. It is from this 
