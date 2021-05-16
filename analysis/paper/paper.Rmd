@@ -34,11 +34,11 @@ output:
 bibliography: references.bib
 csl: "../templates/journal-of-archaeological-science.csl" # Insert path for the bib-style
 abstract: |
-  
+  MMD
 keywords: |
   keyword 1; keyword 2; keyword 3
 highlights: |
-  These are the highlights. 
+  Highlights. 
 linkcolor: green
 urlcolor: blue
 citecolor: red
@@ -78,9 +78,8 @@ DNA sequencing, RNA sequencing, and single-cell RNA sequencing have proliferated
 The new experimental designs and high dimension of modern biological data require parallel 
 development of new statistical methods and computational tools for their analysis.
 Maximum mean discrepancy (MMD) is a new statistical tool with novel mathematical properties 
-[@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to explore its mathematical 
-and statistical properties, to apply MMD methods 
-in the analysis of high-dimensional biological data, and to build user-friendly R software tools that implement MMD methods.
+[@gretton2012kernel;@gretton2006kernel;@gretton2009fast;@borgwardt2006integrating]. We propose to apply MMD methods 
+in the analysis of high-dimensional biological data and to build user-friendly R software tools that implement MMD methods.
 
 
 
@@ -115,8 +114,7 @@ the two samples arise from normal distributions with a single, common variance p
 
 In high-dimensional settings, the analog of Student's t-test is Hotelling's $T^2$ test [@hotelling1931generalization]. 
 Like its univariate counterpart, Hotelling's test assumes a normal (multivariate joint normal) distribution of the random 
-errors and a shared covariance matrix for the two groups. Departures
-from these assumptions may give rise to type I and type II errors in testing. 
+errors and a shared covariance matrix for the two groups. 
 
 ## MMD and its Definition
 
@@ -136,7 +134,6 @@ RKHS $\mathcal{H}$. The Riesz representation theorem for Hilbert spaces states t
 such that $f(x) = \langle f, \phi(x)\rangle_{\mathcal{H}}$ for any $f \in \mathcal{H}$. 
 @gretton2012kernel then define an embedding for probability distribution $p$ as an element $\mu_p \in \mathcal{H}$ satisfying $\mathbb{E}_xf = \langle f, \mu_p\rangle_{\mathcal{H}}$.
 
-## MMD Properties
 
 ## @borgwardt2006integrating Results
 
@@ -197,18 +194,6 @@ tibble::tibble(health_status = c("same", "same", "different", "different"),
              label = "tab:cancer")
 ```
 
-```{r, subtype, echo = FALSE}
-tibble::tibble(subtype = c("same", "same", "different", "different"), 
-               null_hypothesis = c("accepted", "rejected", "accepted", "rejected"),
-               MMD = c(100, 0, 0, 100), 
-               t_test = c(100, 0, 100, 0), 
-               wolfowitz = c(95, 5, 0, 100),
-               smirnov = c(96, 4, 22, 78)) %>%
-  gt::gt() %>%
-  gt::tab_header("Cancer subtype",
-             label = "tab:subtype")
-```
-
 
 
 
@@ -228,7 +213,18 @@ perspective that we propose research to more completely characterize and underst
 
 With the goal of enhancing understanding of the MMD-based test in high dimensions, we will undertake the following research plan. 
 First, we'll identify existing R code that implements Hotelling's $T^2$ test and the two Friedman-Rafsky tests. 
-By achieving **Aim 2**, we'll have R implementations of the MMD-based tests.   
+By achieving **Aim 2**, we'll have R implementations of the MMD-based tests. Together, we'll use these tests to reproduce the results from @borgwardt2006integrating. In the case that we're unable to acquire the data that @borgwardt2006integrating use, we'll use publicly available gene expression data for this task. 
+
+Once we've verified the results from @borgwardt2006integrating, we'll explore use of MMD-based tests in other 
+high-dimensional biology settings. In surgeries for solid organ cancers, surgeons wish to remove cancerous tissue 
+while preserving healthy tissue. Biopsies of the "margins" of the presumably healthy intact tissue are taken 
+during surgery and examined by pathologists to verify that the tumor was removed. One potential use of MMD-based 
+tests (and other two-sample tests) is in the analysis of gene expression data from the presumably healthy margins 
+in a surgical removal of a tumor. One could compare the high-dimensional gene expression levels of cancerous 
+tissue to those from the margins. A result that indicates that the cancerous and margin samples arise from the 
+same distribution would tell the surgeon that the margins contain cancerous tissue.
+
+
 
 ## Approach for Aim 2
 
